@@ -7,6 +7,21 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>My Bank Accounts</h1>
+    <label>Checking balance</label>
+    <p id="checking_balance">100</p>
+    <label>Savings Balance</label>
+    <p id="savings_balance">100</p>
+    <form id="account_selection">
+        <input type="radio" id="checking_balance" name="checking" value="checking">
+        <label for="checking">Checking Account</label>
+        <input type="radio" id="savings_balance" name="savings" value="savings">
+        <label for="savings">Savings Account</label>
+      </form> 
+    <input id="amount" type="number" placeholder="Enter an amount"/>
+    <button type="button" id="add">Deposit</button>
+    <button type="button" id="subtract">Withdrawal</button>
 </body>
+<script src="https://unpkg.com/redux@4.0.5/dist/redux.min.js"></script>
+<script src="index.js" type="module"></script>
 </html>
