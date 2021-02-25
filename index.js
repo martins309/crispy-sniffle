@@ -67,19 +67,40 @@ const incrementButton = document.querySelector('#add');
 const decrementButton = document.querySelector('#subtract');
 const amount = document.querySelector('#amount');
 const selectAccount = document.querySelector('#account_selection');
+const checkingbalance = document.querySelector('#checking_account');
+const savingsbalance = document.querySelector('#savings_account')
+
+
+// const savingsbalance = document.querySelector('input[name="savings"]:checked').value;
+
+
+
 
 incrementButton.addEventListener('click', (e) => {
     e.preventDefault();
-    console.log("amount to increment is", amount.value)
-    console.log(selectAccount.value)
     const amountValue = parseInt(amount.value)
-    store.dispatch(createDeposit(selectAccount.value, amountValue));
+    if (checkingbalance.checked) {
+        store.dispatch(createDeposit(checkingbalance.value, amountValue));
+    }else if (savingsbalance.checked) {
+        store.dispatch(createDeposit(savingsbalance.value, amountValue));
+    }
+    // console.log("amount to increment is", amount.value)
+    // console.log(amount.value)
+    console.log(amount);
+    console.log(checkingbalance);
+
 });
 decrementButton.addEventListener('click', (e) => {
     e.preventDefault();
-    console.log("amount to decrement", amount.value)
     const amountValue = parseInt(amount.value)
-    store.dispatch(createWithdrawal(selectAccount.value, amount.value))
+    console.log("amount to decrement", amount.value)
+    if (checkingbalance.checked) {
+        store.dispatch(createWithdrawal(checkingbalance.value, amountValue));
+    }else if (savingsbalance.checked) {
+            store.dispatch(createDeposit(savingsbalance.value, amountValue));
+        }
+    store.dispatch(createWithdrawal(savingsbalance, amountValue))
+    console.log(savingsbalance.value);
 });
 
 
